@@ -1,43 +1,19 @@
-"""Visualize 2d-data.csv: KDE contour plot with scatter underlay."""
-
-import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
+import matplotlib.pyplot as plt
 
 df = pd.read_csv("data/2d-data.csv")
 
-fig, ax = plt.subplots(figsize=(5, 5))
+fig, ax = plt.subplots(figsize=(6, 5))
 
-# Scatter underlay with very low alpha to hint at raw density
-ax.scatter(df["x"], df["y"], alpha=0.05, s=3, color="steelblue", rasterized=True)
+hb = ax.hexbin(df["x"], df["y"], gridsize=45, mincnt=1)
+ax.scatter(df["x"], df["y"], s=2, alpha=0.08)
 
-# KDE contour fills on top
-sns.kdeplot(
-    data=df,
-    x="x",
-    y="y",
-    fill=True,
-    cmap="Blues",
-    alpha=0.6,
-    levels=8,
-    ax=ax,
-)
-# Contour lines for clarity
-sns.kdeplot(
-    data=df,
-    x="x",
-    y="y",
-    color="navy",
-    linewidths=0.8,
-    levels=8,
-    ax=ax,
-)
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_title("2D data density")
 
-ax.set_aspect("equal")
-ax.set_xlabel("x", fontsize=13)
-ax.set_ylabel("y", fontsize=13)
-ax.set_title("2D Sample Distribution (n=6,000)", fontsize=13)
+cbar = fig.colorbar(hb, ax=ax)
+cbar.set_label("count")
 
-plt.tight_layout()
-plt.savefig("paper/figs/2d-data.png", dpi=150)
-print("Saved paper/figs/2d-data.png")
+fig.tight_layout()
+fig.savefig("figs/fig-2d-data.png", dpi=300)
