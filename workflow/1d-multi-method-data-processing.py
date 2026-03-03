@@ -54,4 +54,7 @@ xtick_labels = plt.gca().get_xticklabels()
 xtick_labels[0].set_fontweight("bold")
 
 plt.tight_layout()
+
+plt.savefig("../figs/1d-multi-method-data-processing.png", dpi=300, bbox_inches="tight")
+
 plt.show()
