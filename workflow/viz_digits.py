@@ -10,3 +10,7 @@ pixels = data.columns.tolist()
 pixels.pop()
 
 tSNE = TSNE(n_jobs=2,random_state=0)
+
+print('Computing t-SNE')
+
+x_transformed = tSNE.fit_transform(pixel_values,pixels)
