@@ -2,7 +2,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 
+# Extract data
+
 data = pd.read_csv('../data/digits-data.csv')
+
+
 
 # Extract data
 pixel_values = data.iloc[:,:-1].values
