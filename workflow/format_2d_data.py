@@ -10,7 +10,4 @@ print("Missing values:\n", df.isnull().sum())
 print("\nDtypes:\n", df.dtypes)
 print("\nStatistics:\n", df.describe())
 
-# Data is clean: numeric, no NAs, both dimensions share same scale
-# No transformation needed — KDE/hexbin handles density directly
-print("\nData is clean: no missing values, consistent numeric types.")
-print("No transformation needed for visualization.")
+
