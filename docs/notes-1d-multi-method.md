@@ -10,13 +10,6 @@ The goal of this visualization is to compare AUC-ROC measurements across multipl
 
 ---
 
-## Concept
-
-- AUC-ROC stands for Area Under Curve - Receiver Operating Characteristic.
-- It is a performance metric for binary classification models (spam/not-spam)
-- It plots true positive rate against flase positive rate
-- Higher value means the model is more reliable.
-
 ## Data Characteristics
 
 - **Metric:** AUC-ROC (continuous, bounded between 0 and 1)
@@ -81,7 +74,7 @@ This strengthens emphasis without altering the data representation.
 
 Several steps were taken to avoid misleading interpretation:
 
-- The y-axis spans the full valid AUC range (0–1)
+- The y-axis spans the full valid AUC range (0-1)
 - No axis truncation was used
 - No distortion or scaling exaggeration
 - All methods are plotted using identical boxplot geometry
@@ -98,7 +91,7 @@ The visualization highlights "Proposed" visually, but does not manipulate scale 
 | Boxplot | Best for comparing grouped distributions |
 | Neutral baselines | Avoid visual clutter |
 | Strong color for Proposed | Immediate perceptual emphasis |
-| Full 0–1 axis | Prevent distortion |
+| Full 0-1 axis | Prevent distortion |
 | Clean layout | Improve interpretability |
 
 ---
