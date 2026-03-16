@@ -17,3 +17,5 @@ cbar.set_label("count")
 
 fig.tight_layout()
 fig.savefig("figs/fig-2d-data.png", dpi=300)
+
+plt.show()
