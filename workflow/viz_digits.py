@@ -4,7 +4,7 @@ from sklearn.manifold import TSNE
 
 # Extract data
 
-data = pd.read_csv('../data/digits-data.csv')
+data = pd.read_csv('data/digits-data.csv')
 
 pixel_values = data.iloc[:,:-1].values
 digits = data.iloc[:,-1].values
