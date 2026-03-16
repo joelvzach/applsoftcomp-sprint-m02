@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load data
-df = pd.read_csv("../data/1d-multi-method-data.csv")
+df = pd.read_csv("data/1d-multi-method-data.csv")
 
 # Ensure Proposed appears first
 methods = ["Proposed"] + sorted(
