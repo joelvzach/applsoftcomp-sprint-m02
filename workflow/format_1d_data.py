@@ -1,48 +1,48 @@
 import pandas as pd
 import numpy as np
 
-# ── 1. Load ────────────────────────────────────────────────────────────────────
+# load the raw data
 df = pd.read_csv("data/1d-data.csv")
-print("── Raw Data ──")
+print("Raw data:")
 print(df.head(10))
-print(f"\nShape     : {df.shape}")
-print(f"Columns   : {df.columns.tolist()}")
-print(f"Dtypes    :\n{df.dtypes}")
+print(f"\nShape: {df.shape}")
+print(f"Columns: {df.columns.tolist()}")
+print(f"Dtypes:\n{df.dtypes}")
 
-# ── 2. Check for missing values ────────────────────────────────────────────────
-print("\n── Missing Values ──")
+# check for missing values
+print("\nMissing values:")
 print(df.isnull().sum())
 
-# ── 3. Basic statistics ────────────────────────────────────────────────────────
-print("\n── Descriptive Statistics (raw) ──")
+# quick summary stats on raw values
+print("\nDescriptive stats:")
 print(df.describe())
 
-# ── 4. Separate groups ────────────────────────────────────────────────────────
+# split by group for separate inspection
 control = df[df["group"] == "control"]["value"]
 case    = df[df["group"] == "case"]["value"]
 
-print(f"\n── Group Counts ──")
+print("\nGroup counts:")
 print(df["group"].value_counts())
 
-print(f"\n── Control Stats ──")
+print("\nControl stats:")
 print(control.describe())
 
-print(f"\n── Case Stats ──")
+print("\nCase stats:")
 print(case.describe())
 
-# ── 5. Check value range → motivates log transform ────────────────────────────
-print("\n── Value Range ──")
-print(f"Min  : {df['value'].min():.4f}")
-print(f"Max  : {df['value'].max():.4f}")
-print(f"Range spans ~{df['value'].max() / df['value'].min():.0f}x → log transform needed")
+# values span several orders of magnitude, so log scale makes sense for viz
+print("\nValue range:")
+print(f"Min: {df['value'].min():.4f}")
+print(f"Max: {df['value'].max():.4f}")
+print(f"Range spans ~{df['value'].max() / df['value'].min():.0f}x -> log transform needed")
 
-# ── 6. Apply log10 transform ──────────────────────────────────────────────────
+# add log10 column for use in visualization
 df["log10_value"] = np.log10(df["value"])
 
-print("\n── Log10 Transformed Stats ──")
+print("\nLog10 stats by group:")
 print(df.groupby("group")["log10_value"].describe())
 
-# ── 7. Save formatted data ────────────────────────────────────────────────────
+# save formatted data with the new log10 column
 df.to_csv("data/1d-data-formatted.csv", index=False)
-print("\n── Saved → data/1d-data-formatted.csv ──")
+print("\nSaved -> data/1d-data-formatted.csv")
 print(df.head(10))
