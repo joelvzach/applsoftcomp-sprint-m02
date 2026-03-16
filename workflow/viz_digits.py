@@ -27,7 +27,7 @@ scatter = plt.scatter(
 
 plt.colorbar(scatter, ticks=range(10), label="Digit Class")
 
-plt.savefig('../paper/figs/fig-digits.png')
+plt.savefig('figs/fig-digits.png')
 
 print('Figure Generating...')
 plt.show()
